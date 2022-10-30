@@ -36,7 +36,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.MapPost("/convert_excel", (Input input_data) =>
 {
@@ -123,9 +123,16 @@ app.MapPost("/convert_pdf", (Input input_data) =>
 })
 .WithName("ConvertPdf");
 
+app.MapPost("/login_test", (Input_str email) =>
+{
+    return true;    
+})
+.WithName("LoginTest");
+
 app.Run();
 
 record Input(List<JsonDocument> json_input);
+record Input_str(string email);
 
 public class MinimalApiFunctions
 {
